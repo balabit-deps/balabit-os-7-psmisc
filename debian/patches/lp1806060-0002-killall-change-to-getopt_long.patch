@@ -1,0 +1,37 @@
+From b769da1626044f97a689c1665270595f36f878e7 Mon Sep 17 00:00:00 2001
+From: Craig Small <csmall@enc.com.au>
+Date: Sun, 20 May 2018 20:46:55 +1000
+Subject: [PATCH] killall: change to getopt_long
+
+with getopt_long_only -ve fails because its not sure what the -v
+is for --version or --verbose. Changing to the non-_only version means
+it doesn't try to expand the options to long options.
+
+References:
+ psmisc/psmisc#12
+
+Author: Christian Ehrhardt <christian.ehrhardt@canonical.com>
+Original-Author: Craig Small <csmall@enc.com.au>
+Origin: backport, https://gitlab.com/psmisc/psmisc/commit/b769da1626044f97a689c1665270595f36f878e7
+Bug-Ubuntu: https://bugs.launchpad.net/bugs/1806060
+Last-Update: 2018-12-11
+
+---
+ ChangeLog     | 1 +
+ src/killall.c | 4 ++--
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+--- a/src/killall.c
++++ b/src/killall.c
+@@ -856,9 +856,9 @@ main (int argc, char **argv)
+ 
+   opterr = 0;
+ #ifdef WITH_SELINUX
+-  while ( (optc = getopt_long_only(argc,argv,"egy:o:ilqrs:u:vwZ:VIn:",options,NULL)) != -1) {
++  while ( (optc = getopt_long(argc,argv,"egy:o:ilqrs:u:vwZ:VIn:",options,NULL)) != -1) {
+ #else
+-  while ( (optc = getopt_long_only(argc,argv,"egy:o:ilqrs:u:vwVIn:",options,NULL)) != -1) {
++  while ( (optc = getopt_long(argc,argv,"egy:o:ilqrs:u:vwVIn:",options,NULL)) != -1) {
+ #endif
+     switch (optc) {
+     case 'e':

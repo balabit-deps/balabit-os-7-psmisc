@@ -1,3 +1,12 @@
+psmisc (23.1-1ubuntu0.1) bionic; urgency=medium
+
+  * fix killall option parsing (LP: #1806060)
+    - d/patches/lp1806060-0001-killall-Fix-INT-option-parsing.patch
+    - d/patches/lp1806060-0002-killall-change-to-getopt_long.patch
+    - d/patches/lp1806060-0003-killall-Another-go-at-option-parsing.patch
+
+ -- Christian Ehrhardt <christian.ehrhardt@canonical.com>  Tue, 11 Dec 2018 16:46:04 +0100
+
 psmisc (23.1-1) unstable; urgency=medium
 
   * New upstream source

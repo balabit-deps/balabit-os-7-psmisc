@@ -1,1 +1,4 @@
 manpage-fixes
+lp1806060-0001-killall-Fix-INT-option-parsing.patch
+lp1806060-0002-killall-change-to-getopt_long.patch
+lp1806060-0003-killall-Another-go-at-option-parsing.patch
